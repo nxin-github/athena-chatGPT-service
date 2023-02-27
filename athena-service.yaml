@@ -1,0 +1,16 @@
+chatgpt:
+  # 答案离散程度
+  temperature: 0.7
+  # 最大应答长度
+  max-tokens: 1024
+  # 恢复条目数
+  num: 1
+  # 终止符
+  stop: ""
+  # 你的apiKey
+  api-key: you api key
+registration-center:
+  # nacos地址
+  server-addr: localhost:8848
+  # 此程序希望在nacos上的端口
+  port: 936
