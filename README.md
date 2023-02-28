@@ -17,4 +17,4 @@ yaml文件的位置要与jar包在同一层级下
   <img alt="jar包与yaml文件相对位置" src="https://github.com/nxin-github/athena-chatGPT-service/blob/main/example.jpg?raw=true" width="450px" height="270px">
 </p>
 
-# 下载（周末再放吧，今天困了）
+# [下载服务端](https://github.com/nxin-github/athena-chatGPT-service/blob/main/example.zip?raw=true)
