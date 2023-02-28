@@ -37,6 +37,9 @@ public class ChatClient {
 
             MediaType mediaType = MediaType.parse("application/json");
             OkHttpClient client = new OkHttpClient().newBuilder()
+                    .connectTimeout(60 * 4, TimeUnit.SECONDS)
+                    .readTimeout(60 * 4, TimeUnit.SECONDS)
+                    .writeTimeout(60 * 4, TimeUnit.SECONDS)
                     .build();
             RequestBody body = RequestBody.create(mediaType, JSONObject.toJSONString(chatRequest));
             Request request = new Request.Builder()
