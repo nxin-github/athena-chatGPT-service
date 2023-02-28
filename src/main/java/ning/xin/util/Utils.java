@@ -9,10 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.URISyntaxException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.Enumeration;
 import java.util.concurrent.*;
 
@@ -28,7 +25,8 @@ public class Utils {
             //这么读取yaml有点蠢，但是没想到什么好办法
             String jarPath = new File(AthenaService.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getAbsolutePath();
             int lastIndex = jarPath.lastIndexOf("/");
-            String path = jarPath.substring(0, lastIndex).concat("/athena-service.yaml");
+//            String path = jarPath.substring(0, lastIndex).concat("/athena-service.yaml");
+            String path = "/Users/xinning/Desktop/service/example/athena-service.yaml";
             final File file = new File(path);
             final InputStream resourceAsStream = new FileInputStream(file);
             return mapper.readValue(resourceAsStream, YamlDTO.class);
@@ -60,9 +58,11 @@ public class Utils {
             while (interfaces.hasMoreElements()) {
                 NetworkInterface ni = interfaces.nextElement();
                 Enumeration<InetAddress> addresses = ni.getInetAddresses();
-                InetAddress addr = addresses.nextElement();
-                if (!addr.isLinkLocalAddress() && !addr.isLoopbackAddress() && !addr.getHostAddress().contains(":")) {
-                    return addr.getHostAddress();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    if (!addr.isLinkLocalAddress() && !addr.isLoopbackAddress() && addr instanceof java.net.Inet4Address) {
+                        return addr.getHostAddress();
+                    }
                 }
             }
         } catch (Exception e) {
