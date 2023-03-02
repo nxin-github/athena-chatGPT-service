@@ -4,7 +4,7 @@
 https://github.com/nxin-github/athena-chatGPT-client
 # 环境准备
 - 注册中心，目前只支持nacos
-- api-key密钥
+- openAI密钥
 - java运行环境
 # 使用
 直接启动jar包
